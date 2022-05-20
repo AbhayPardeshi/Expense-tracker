@@ -1,6 +1,9 @@
 import React from "react";
+import { useGlobalContext } from "./Context";
 
-const Heading = ({ list }) => {
+const Heading = () => {
+  const { list } = useGlobalContext();
+
   const allValues = list.map((item) => Number(item.value));
   const total = allValues.reduce((acc, item) => (acc += item), 0);
 

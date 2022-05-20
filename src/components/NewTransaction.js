@@ -1,49 +1,10 @@
-import React, { useState, useEffect } from "react";
-import Heading from "./Heading";
+import React from "react";
+import { useGlobalContext } from "./Context";
 
 const NewTransaction = () => {
-  const [list, setList] = useState([]);
-  const [name, setName] = useState("");
-  const [amount, setAmount] = useState("");
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newItem = {
-      id: new Date().getTime().toString(),
-      title: name,
-      value: amount,
-    };
-    setList([...list, newItem]);
-    setName("");
-    setAmount("");
-  };
-
-  const removeItem = (id) => {
-    setList(list.filter((listItem) => listItem.id !== id));
-  };
-
+  const { handleSubmit, name, setName, amount, setAmount } = useGlobalContext();
   return (
-    <div>
-      <Heading list={list} />
-      <div>
-        <h3>History</h3>
-        <ul className="list">
-          {list.map((item) => {
-            const { id, title, value } = item;
-            return (
-              <li key={id} className={value > 0 ? "plus" : "minus"}>
-                {title}
-                <span>
-                  {value > 0 ? "+" : "-"}${Math.abs(value)}
-                </span>
-                <button className="delete-btn" onClick={() => removeItem(id)}>
-                  x
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-
+    <>
       <h3>Add new transaction</h3>
       <form id="form" onSubmit={handleSubmit}>
         <div className="form-control">
@@ -71,7 +32,7 @@ const NewTransaction = () => {
         </div>
         <button className="btn">Add transaction</button>
       </form>
-    </div>
+    </>
   );
 };
 

@@ -9,7 +9,7 @@
 }
 
 body {
-  background-color: #f7f7f7;
+  background-color: #dfdbd0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,6 +38,12 @@ h3 {
 h4 {
   margin: 0;
   text-transform: uppercase;
+}
+
+.main-heading {
+  color: #ff5f09;
+  text-align: center;
+  font-size: 3rem;
 }
 
 .inc-exp-container {
@@ -89,7 +95,7 @@ input[type="number"] {
 
 .btn {
   cursor: pointer;
-  background-color: #9c88ff;
+  background-color: #df9b5b;
   box-shadow: var(--box-shadow);
   color: #fff;
   border: 0;

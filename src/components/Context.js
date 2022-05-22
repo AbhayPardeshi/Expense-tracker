@@ -1,9 +1,18 @@
 import React, { useContext, useState } from "react";
 
 const AppContext = React.createContext();
-// console.log(AppContext);
+
+const getLocalStorage = () => {
+  let list = localStorage.getItem("list");
+  if (list) {
+    return (list = JSON.parse(list));
+  } else {
+    return [];
+  }
+};
+
 const AppProvider = ({ children }) => {
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(getLocalStorage());
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
   const handleSubmit = (e) => {
@@ -21,6 +30,11 @@ const AppProvider = ({ children }) => {
   const removeItem = (id) => {
     setList(list.filter((listItem) => listItem.id !== id));
   };
+
+  useEffect(() => {
+    localStorage.setItem("list", JSON.stringify(list));
+  }, [list]);
+
   return (
     <AppContext.Provider
       value={{

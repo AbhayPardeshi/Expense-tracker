@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 
 const AppContext = React.createContext();
-console.log(AppContext);
+// console.log(AppContext);
 const AppProvider = ({ children }) => {
   const [list, setList] = useState([]);
   const [name, setName] = useState("");
